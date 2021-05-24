@@ -31,7 +31,7 @@ Como parámetro le paso (allInfo) que es cualquier nombre que le quiera dar en e
 function createCard(allInfo) {
   let htmlCardSerie = "";
   for (const serie of allInfo) {
-    htmlCardSerie += `<li class="serie__card js-serie-card" id= ${serie.show.id}>`;
+    htmlCardSerie += `<li class="serie__card js-serie-card" data-id= ${serie.show.id}>`;
     if (serie.show.image === null) {
       htmlCardSerie += `<img class="serie__card--img" src="${defaultImage}" alt="pic"/>`;
     } else {
@@ -62,5 +62,17 @@ function addListernerstoCard() {
 /* Clicar favoritos: Es un evento que necesita de un currentTarget xq necesitamos saber cuando se actua sobre el elemento para luego poder aplicar un toggle de cambio de color */
 function favoriteClick(event) {
   const cardLiClicked = event.currentTarget; //añadimos al elemento q escuchamos q es la tarjeta y con el current escucha al elemento madre donde ha sucedido el evento. Si quisiéramos exactamente donde hemos pinchado sería target
+  // console.log("li", cardLiClicked); //Visualizar ID
   cardLiClicked.classList.toggle("favorite");
+  const cardId = cardLiClicked.dataset.id;
+  //console.log(cardId); Recoge OK la ID de la ficha
+  // console.log("cardId", cardId); // ID recogido OK
+  const isFav = favoritesData.find((favoriteId) => favoriteId === cardId);
+  if (isFav === undefined) {
+    //En esta indexación si esa ID clicada no está en mi array de favoritos súbemela
+    favoritesData.push(cardId);
+  } else {
+    favoritesData = favoritesData.filter((favoriteId) => favoriteId !== cardId);
+  }
+  //console.log(favoritesData); //Nuevo favoritesData guardado OK & nueva búsqueda
 }
