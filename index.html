@@ -16,7 +16,7 @@
 
     <form action="#" method="get">
 
-      <input type="text" class="js-userInput" placeholder="Ej: The Office" />
+      <input type="text" class="js-userInput" placeholder="Ej: The Office" value="dexter" />
 
       <input type="button" class="button js-buttonSearch" value="Buscar" />
     </form>
@@ -26,13 +26,15 @@
 
     <section class="container">
 
-      <section class="favorites">
+      <section class="favorites-container">
+
         <ul class="series-favorites js-favorites">FAVORITES</ul>
-        <input type="button" onclick="reset" class="button" value="Eliminar">
+        <!-- <input type="button" onclick="reset" class="button" value="Eliminar"> -->
       </section>
 
 
-      <section class="result">
+      <section class="result-container">
+
         <ul class="searched-series js-searchResult">RESULT</ul>
       </section>
     </section>

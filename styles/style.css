@@ -7,16 +7,16 @@
 .container {
   background-color: aquamarine;
   width: auto;
-  height: auto;
+  /*height: auto;*/
   display: flex;
   flex-direction: row;
 }
 
-.result {
+.result-container {
   background-color: palevioletred;
   width: 70%;
 }
-.favorites {
+.favorites-container {
   background-color: greenyellow;
   width: 30%;
 }
@@ -30,7 +30,14 @@
   background-color: honeydew;
   cursor: pointer;
 }
-.favorite {
+.clicked {
   background-color: rgb(55, 139, 139);
   color: white;
+}
+
+.serie__card.favorite {
+  background-color: red;
+}
+.serie__card--img.favorite {
+  width: 50%;
 }
