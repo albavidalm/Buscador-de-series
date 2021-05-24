@@ -11,9 +11,36 @@
 </head>
 
 <body>
+  <header class="header">
+    <h1 class="page-title">Buscador de Series</h1>
+
+    <form action="#" method="get">
+
+      <input type="text" class="js-userInput" placeholder="Ej: The Office" />
+
+      <input type="button" class="button js-buttonSearch" value="Buscar" />
+    </form>
+  </header>
+
+  <main class="content">
+
+    <section class="container">
+
+      <section class="favorites">
+        <ul class="series-favorites js-favorites">FAVORITES</ul>
+        <input type="button" onclick="reset" class="button" value="Eliminar">
+      </section>
 
 
-  <script src="./main.js"></script>
+      <section class="result">
+        <ul class="searched-series js-searchResult">RESULT</ul>
+      </section>
+    </section>
+
+  </main>
+
+
+  <script type="text/javascript" src="./js/main.js"></script>
 </body>
 
 </html>

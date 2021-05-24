@@ -1,0 +1,36 @@
+.header {
+  background-color: coral;
+  width: 100%;
+  height: 150px;
+}
+
+.container {
+  background-color: aquamarine;
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.result {
+  background-color: palevioletred;
+  width: 70%;
+}
+.favorites {
+  background-color: greenyellow;
+  width: 30%;
+}
+.button {
+  height: 25px;
+}
+
+.serie__card {
+  list-style-type: none;
+  border: 1px solid black;
+  background-color: honeydew;
+  cursor: pointer;
+}
+.favorite {
+  background-color: rgb(55, 139, 139);
+  color: white;
+}
