@@ -6,6 +6,8 @@ const resultContainer = document.querySelector(".js-searchResult");
 const resultFavorites = document.querySelector(".js-favorites");
 const defaultImage =
   "https://via.placeholder.com/210x295/ffffff/666666/?text=TV";
+const backgroundFavCard = document.querySelector(".js-page");
+const reset = document.querySelector(".js-resetButton");
 let seriesData = [];
 let favoritesData = [];
 
@@ -25,6 +27,27 @@ function getApi() {
       createCard(seriesData);
       createCardFavorite(favoritesData);
     });
+}
+
+//AL ARRANCAR LA PÁGINA
+getLocalStorage();
+
+//LocalStorage
+function setLocalStorage() {
+  localStorage.setItem("localListFavorites", JSON.stringify(favoritesData));
+}
+
+function getLocalStorage() {
+  favoritesData = JSON.parse(localStorage.getItem("localListFavorites"));
+
+  if (localStorage.getItem("localListFavorites") != null) {
+    createCardFavorite(favoritesData);
+    return favoritesData;
+  } else {
+    favoritesData = [];
+    //const data = JSON.parse(localStorage.getItem("LocalListFavorites"));
+    //console.log(data);
+  }
 }
 
 /* Una vez obtenidos nuestros datos de la API deberemos crear nuestras fichas de series, para ello necesitamos un contenido HTML con los datos que nos interesan del objeto recibido para poder pintar posteriormente su contenido en nuestra página.
@@ -61,7 +84,7 @@ function createCardFavorite(allFavs) {
     } else {
       htmlCardSerie += `<img class="serie__card--img" src="${serie.show.image.medium}" alt="${serie.show.name} cover" title="${serie.show.name} cover" />`;
     }
-    htmlCardSerie += `<h2 class="serie__card--title">${serie.show.name}</h2>`;
+    htmlCardSerie += `<h2 class="serie__card--title-fav">${serie.show.name}</h2>`;
     htmlCardSerie += `</li>`;
   }
   resultFavorites.innerHTML = htmlCardSerie; // Creo el html con el contenido superior
@@ -98,7 +121,7 @@ function favoriteClick(event) {
   // console.log("li", cardLiClicked); //Visualizar ID
 
   const cardId = parseInt(cardLiClicked.dataset.id);
-  console.log("me han clickado", cardId);
+  //console.log("me han clickado", cardId);
   //console.log(cardId); Recoge OK la ID de la ficha
   // console.log("cardId", cardId); // ID recogido OK
   const isFav = favoritesData.find((favorite) => {
@@ -109,7 +132,7 @@ function favoriteClick(event) {
   if (isFav === undefined) {
     //En esta indexación si esa ID clicada no está en mi array de favoritos súbemela
     const serieClicked = seriesData.find((serie) => {
-      console.log(serie.show.id, cardId);
+      //console.log(serie.show.id, cardId);
       return serie.show.id === cardId;
     });
     favoritesData.push(serieClicked);
@@ -120,5 +143,15 @@ function favoriteClick(event) {
 
   createCard(seriesData);
   createCardFavorite(favoritesData);
-  // guardar en ls
+  setLocalStorage();
 }
+
+//BOTÓN BORRAR LOCALSTORAGE
+function eraseLocalStorage() {
+  //console.log("Clicado");
+  localStorage.removeItem("favoritesData");
+  favoritesData = [];
+  setLocalStorage();
+  createCardFavorite(favoritesData);
+}
+reset.addEventListener("click", eraseLocalStorage);

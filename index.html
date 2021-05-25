@@ -8,18 +8,21 @@
   <title>M2 Evaluación final Alba Vidal</title>
   <link rel="stylesheet" href="./styles/normalize.css">
   <link rel="stylesheet" href="./styles/style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&family=Playfair+Display&family=Spartan:wght@300,400&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="./favicon.ico">
 </head>
 
-<body>
+<body class="background">
   <header class="header">
-    <h1 class="page-title">Buscador de Series</h1>
 
-    <form action="#" method="get">
-
-      <input type="text" class="js-userInput" placeholder="Ej: The Office" value="dexter" />
-
-      <input type="button" class="button js-buttonSearch" value="Buscar" />
+    <h1 class="header__title">B<span class="redletter">u</span>scador d<span class="redletter">e</span> Seri<span class="redletter">e</span>s</h1>
+    <div class="header__stars">★ ★ ★</div>
+    <form class="header__form" action="#" method="get">
+      <input type="text" class="header__input js-userInput" placeholder="Ej: The Office" value="" />
+      <input type="button" class="header__button js-buttonSearch" value="Buscar" />
     </form>
+
   </header>
 
   <main class="content">
@@ -27,21 +30,18 @@
     <section class="container">
 
       <section class="favorites-container">
-
-        <ul class="series-favorites js-favorites">FAVORITES</ul>
-        <!-- <input type="button" onclick="reset" class="button" value="Eliminar"> -->
+        <h3 class="favorites__title">Mis series favoritas</span></h3>
+        <input type="button" onclick="reset" class="favorites__button js-resetButton" value="Eliminar">
+        <ul class="series-favorites container-title js-favorites"></ul>
       </section>
 
 
       <section class="result-container">
-
-        <ul class="searched-series js-searchResult">RESULT</ul>
+        <ul class="searched-series js-searchResult"></ul>
       </section>
     </section>
 
   </main>
-
-
   <script type="text/javascript" src="./js/main.js"></script>
 </body>
 
